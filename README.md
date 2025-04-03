@@ -8,7 +8,7 @@ This is a test application that demonstrates the use of Temporal for orchestrati
 
 ## End to End Workflow
 
-![Workflow](templates/end-to-end.png)
+![Workflow](templates/end-2-end.png)
 
 ## Features
 
