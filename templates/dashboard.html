@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - E-commerce Test App{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">User Profile</h5>
+            </div>
+            <div class="card-body">
+                <h6>Name</h6>
+                <p>{{ user.name }}</p>
+                <h6>Email</h6>
+                <p>{{ user.email }}</p>
+            </div>
+        </div>
+        
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Rewards Status</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span>Points:</span>
+                    <span class="badge bg-primary">{{ rewards.points }}</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>Tier:</span>
+                    <span class="badge bg-{{ 'success' if rewards.tier == 'platinum' else 'warning' if rewards.tier == 'gold' else 'secondary' }}">
+                        {{ rewards.tier.title() }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Order History</h5>
+            </div>
+            <div class="card-body">
+                {% if orders %}
+                    {% for order in orders %}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="card-subtitle mb-2 text-muted">Order #{{ order._id }}</h6>
+                                    <span class="badge bg-{{ 'success' if order.status == 'completed' else 'warning' if order.status == 'processing' else 'danger' }}">
+                                        {{ order.status.title() }}
+                                    </span>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Item</th>
+                                                <th>Quantity</th>
+                                                <th>Price</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for item in order.items %}
+                                                <tr>
+                                                    <td>{{ item.name }}</td>
+                                                    <td>{{ item.quantity }}</td>
+                                                    <td>${{ "%.2f"|format(item.price) }}</td>
+                                                    <td>${{ "%.2f"|format(item.price * item.quantity) }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                                                <td><strong>${{ "%.2f"|format(order.total) }}</strong></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <small class="text-muted">Ordered on: {{ order.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-muted">No orders yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
