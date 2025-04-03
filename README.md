@@ -47,6 +47,8 @@ Create a `.env` file in the project root with the following content:
 ```
 MONGODB_URI=mongodb://localhost:27017/
 SECRET_KEY=your-secret-key-here
+or
+You can hardcode it
 ```
 
 ## Running the Application
