@@ -80,6 +80,7 @@ python app.py
 ## Testing Failure Scenarios
 
 The application includes a simulation panel that allows you to test various failure scenarios:
+This is yet to be properly implemented, for now we are simulating failures randomly 10% time
 
 1. Place an order
 2. Copy the workflow ID from the order response
