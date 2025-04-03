@@ -158,6 +158,10 @@ To test durability:
 4. Restart the worker
 5. Observe how the workflow continues from the last successful step
 
+## TODO:
+
+1. Implement `Continue-As-New` when message length goes over 25k
+
 ## Contributing
 
 1. Fork the repository
