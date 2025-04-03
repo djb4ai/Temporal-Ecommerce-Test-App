@@ -6,6 +6,10 @@ This is a test application that demonstrates the use of Temporal for orchestrati
 
 ![Application Flow](templates/flow.png)
 
+## End to End Workflow
+
+![Workflow](templates/end-to-end.png)
+
 ## Features
 
 - User registration and login -- In Roadmap
