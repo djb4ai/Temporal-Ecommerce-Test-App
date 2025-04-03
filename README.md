@@ -161,6 +161,7 @@ To test durability:
 ## TODO:
 
 1. Implement `Continue-As-New` when message length goes over 25k
+2. For the rewards Entity Workload, change the implementation, use- `get_workflow_handle()` with client
 
 ## Contributing
 
